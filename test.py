@@ -4,7 +4,7 @@ import cv2,os
 
 if __name__ == '__main__':
 
-    ezm_model = './ezm/VehicleDanger_trt_int8_bs4.ezm'
+    ezm_model = './/ezm/VehicleDanger_trt_int8_bs4.ezm'
     mode='test'
     handle = ModelInfer(ezm_model, mode=mode)
 

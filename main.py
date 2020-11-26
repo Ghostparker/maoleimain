@@ -15,7 +15,7 @@ import postprocessfactory
 
 class TagInfo:
     def __init__(self,line):
-        data = list.strip().split()
+        data = line.strip().split()
         if(len(data) != 6):
             return None
         self.info = {}
