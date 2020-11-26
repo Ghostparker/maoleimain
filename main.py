@@ -13,6 +13,23 @@ from tools.preprocess_expre import PreprocessExpreModule
 import postprocessfactory
 
 
+class TagInfo:
+    def __init__(self,line):
+        data = list.strip().split()
+        if(len(data) != 6):
+            return None
+        self.info = {}
+        self.info['tagname'] = data[0]
+        self.info['tagid'] = data[1]
+        self.info['thlow'] = float(data[2])
+        self.info['thhigh'] = float(data[3])
+        self.info['outlayername'] = data[4]
+        self.info['outindex'] = int(data[5])
+
+
+
+
+
 class NumpyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, np.integer):
@@ -46,6 +63,8 @@ class ModelInfer:
         self.mode = mode
         self.model_name = sample["model_name"]
 
+        self.set_taginfo()
+
         # preprocess init...
         self.preprocess_handle = PreprocessExpreModule('{}/data/pre_conf.json'.format(cur_path))
         # postprocess init...
@@ -67,6 +86,15 @@ class ModelInfer:
         self.mode=='dev': used to develop,return model outputs without threshold.
         self.mode==others : used to EZI test.
     '''
+
+    def set_taginfo(self):
+        self.taginfo = []
+        for line in open(osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg')):
+            if('#' == line[0]):
+                continue
+            tmptaginfo = TagInfo(line)
+            if(tmptaginfo is not None):
+                self.taginfo.append(tmptaginfo)
 
     def get_infer_result(self, image, box=None):
         # preprocess image
@@ -96,6 +124,10 @@ class ModelInfer:
             return outputs
 
         return outputs, vega_outputs
+
+    def add_vega_out(self,vega_outputs):
+        print(vega_out)
+
 
 
 if "__main__" == __name__:
