@@ -1,5 +1,5 @@
 from main import ModelInfer
-import cv2
+import cv2,os
 
 
 if __name__ == '__main__':
