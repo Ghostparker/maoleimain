@@ -105,6 +105,9 @@ class ModelInfer:
             print(vega_out)
             if(isinstance(vega_out[0][0],dict) ):
                 vega_out[0][0]['tagname'] = self.get_tagname_bytagid(vega_out[0][0]['tagid'])
+
+            print('end add vegaout')
+            print(vega_out)
             return vega_out
         except:
             return vega_out
