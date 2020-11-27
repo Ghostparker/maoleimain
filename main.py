@@ -91,18 +91,18 @@ class ModelInfer:
     def set_taginfo(self):
         self.taginfo = []
         print(osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg'))
-        for line in open(osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg')):
-
-            if('#' == line[0]):
-                print('line ##### {}'.format(line))
-                continue
-            print('line no ||||||||| {}'.format(line))
-            tmptaginfo = TagInfo(line)
-            if(tmptaginfo is not None):
-                self.taginfo.append(tmptaginfo)
-
-        for i in self.taginfo:
-            i.show()
+        # for line in open(osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg')):
+        #
+        #     if('#' == line[0]):
+        #         print('line ##### {}'.format(line))
+        #         continue
+        #     print('line no ||||||||| {}'.format(line))
+        #     tmptaginfo = TagInfo(line)
+        #     if(tmptaginfo is not None):
+        #         self.taginfo.append(tmptaginfo)
+        #
+        # for i in self.taginfo:
+        #     i.show()
 
     def get_infer_result(self, image, box=None):
         # preprocess image
