@@ -27,8 +27,6 @@ class TagInfo:
     def show(self):
         print(self.info)
 
-
-
 class NumpyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, np.integer):
@@ -101,7 +99,6 @@ class ModelInfer:
             if(isinstance(vega_out[0][0],dict) ):
                 tmptagname = self.get_tagname_bytagid(vega_out[0][0]['tagnameid'])
                 vega_out[0][0]['tagname'] = tmptagname
-
             return vega_out
         except:
             print('except')
