@@ -96,9 +96,10 @@ class ModelInfer:
 
     def add_vegaout(self,vega_out):
         try:
-            if(isinstance(vega_out[0][0],dict) ):
-                tmptagname = self.get_tagname_bytagid(vega_out[0][0]['tagnameid'])
-                vega_out[0][0]['tagname'] = tmptagname
+            if(isinstance(vega_out[0],list) ):
+                for idx,one_vegaout in enumerate(vega_out[0]):
+                    tmptagname = self.get_tagname_bytagid(vega_out[0][idx]['tagnameid'])
+                    vega_out[0][idx]['tagname'] = tmptagname
             return vega_out
         except:
             print('except')
