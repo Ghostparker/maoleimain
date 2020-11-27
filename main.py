@@ -121,6 +121,7 @@ class ModelInfer:
         print(search_tagid)
         print(type(search_tagid))
         for i in self.taginfo:
+            print(i['tagid'])
             if(i['tagid'] == search_tagid):
                 return i['tagname']
         return 'not exist'
