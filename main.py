@@ -26,7 +26,8 @@ class TagInfo:
         self.info['outlayername'] = data[4]
         self.info['outindex'] = int(data[5])
 
-
+    def show(self):
+        print(self.info)
 
 
 
@@ -95,6 +96,9 @@ class ModelInfer:
             tmptaginfo = TagInfo(line)
             if(tmptaginfo is not None):
                 self.taginfo.append(tmptaginfo)
+
+        for i in self.taginfo:
+            i.show()
 
     def get_infer_result(self, image, box=None):
         # preprocess image
