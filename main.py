@@ -16,6 +16,7 @@ import postprocessfactory
 class TagInfo:
     def __init__(self,line):
         data = line.strip().split()
+        print(data)
         self.info = {}
         self.info['tagname'] = data[0]
         self.info['tagid'] = data[1]
