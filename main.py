@@ -122,9 +122,8 @@ class ModelInfer:
         print(search_tagid)
         print(type(search_tagid))
         for i in self.taginfo:
-            print(i['tagid'])
-            if(i['tagid'] == search_tagid):
-                return i['tagname']
+            if(i.info['tagid'] == search_tagid):
+                return i.info['tagname']
         return 'not exist'
 
     def get_infer_result(self, image, box=None):
