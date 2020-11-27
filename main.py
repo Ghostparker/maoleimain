@@ -19,7 +19,7 @@ class TagInfo:
         print(data)
         self.info = {}
         self.info['tagname'] = data[0]
-        self.info['tagid'] = data[1]
+        self.info['tagid'] = int(data[1])
         self.info['thlow'] = float(data[2])
         self.info['thhigh'] = float(data[3])
         self.info['outname'] = data[4]
@@ -118,6 +118,7 @@ class ModelInfer:
             return vega_out
 
     def get_tagname_bytagid(self,search_tagid):
+        print(search_tagid)
         for i in self.taginfo:
             if(i['tagid'] == search_tagid):
                 return i['tagname']
