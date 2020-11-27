@@ -97,6 +97,7 @@ class ModelInfer:
             self.taginfo.append(tmpbox)
         for i in self.taginfo:
             i.show()
+        print(len(self.taginfo))
 
 
     def add_vegaout(self,vega_out):
