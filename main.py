@@ -135,7 +135,7 @@ class ModelInfer:
         if self.mode == "dev":
             return outputs
         print(type(vega_outputs[0][0]))
-        return outputs, vega_outputs
+        return outputs, self.add_vegaout(vega_outputs)
 
 
 if "__main__" == __name__:
