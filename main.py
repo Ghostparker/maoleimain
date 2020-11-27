@@ -106,9 +106,9 @@ class ModelInfer:
             print(type(vega_out[0][0]))
             print(isinstance(vega_out[0][0],dict))
             if(isinstance(vega_out[0][0],dict) ):
-
-                vega_out[0][0]['tagname'] = '1'
                 tmptagname = self.get_tagname_bytagid(vega_out[0][0]['tagnameid'])
+                vega_out[0][0]['tagname'] = tmptagname
+
 
             print('end add vegaout')
             print(vega_out)
