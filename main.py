@@ -119,6 +119,7 @@ class ModelInfer:
 
     def get_tagname_bytagid(self,search_tagid):
         print(search_tagid)
+        print(type(search_tagid))
         for i in self.taginfo:
             if(i['tagid'] == search_tagid):
                 return i['tagname']
