@@ -101,6 +101,7 @@ class ModelInfer:
 
     def add_vegaout(self,vega_out):
         try:
+            print('in add vegaout')
             print(vega_out)
             if(isinstance(vega_out[0][0],dict) ):
                 vega_out[0][0]['tagname'] = self.get_tagname_bytagid(vega_out[0][0]['tagid'])
@@ -140,7 +141,7 @@ class ModelInfer:
         outputs, vega_outputs = postprocessfactory.execute_post_process(self.model_name, [output], [usr_data])
         if self.mode == "dev":
             return outputs
-        print(type(vega_outputs[0][0]))
+        # print(type(vega_outputs[0][0]))
         return outputs, self.add_vegaout(vega_outputs)
 
 
