@@ -13,6 +13,22 @@ from tools.preprocess_expre import PreprocessExpreModule
 import postprocessfactory
 
 
+class TagInfo:
+    def __init__(self,line):
+        data = line.strip().split()
+        self.info = {}
+        self.info['tagname'] = data[0]
+        self.info['tagid'] = data[1]
+        self.info['thlow'] = float(data[2])
+        self.info['thhigh'] = float(data[3])
+        self.info['outname'] = data[4]
+        self.info['outindex'] = int(data[5])
+
+    def show(self):
+        print(self.info)
+
+
+
 class NumpyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, np.integer):
@@ -62,11 +78,24 @@ class ModelInfer:
                 self.model.LoadModelFromFile(ezm_path)
 
         self.label_map = {0: '0', 1: '1', 2: '2', 3: '3'}
+        self.set_taginfo()
 
     ''' self.mode=='save_pb': used to generate quantization files and only save pb files.
         self.mode=='dev': used to develop,return model outputs without threshold.
         self.mode==others : used to EZI test.
     '''
+
+
+    def set_taginfo(self):
+        self.taginfo = []
+        self.tagcfgpath = osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg')
+        for line in open(self.tagcfgpath):
+            if('#' == line[0]):
+                continue
+            tmpbox = TagInfo(line)
+            self.taginfo.append(tmpbox)
+        for i in self.taginfo:
+            i.show()
 
     def get_infer_result(self, image, box=None):
         # preprocess image
