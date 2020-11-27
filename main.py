@@ -91,7 +91,7 @@ class ModelInfer:
         self.taginfo = []
         self.tagcfgpath = osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg')
         for line in open(self.tagcfgpath):
-            if('#' == line[0] or len(line.strip().split()) != 6):
+            if('#' in line or len(line.strip().split()) != 6):
                 continue
             tmpbox = TagInfo(line)
             self.taginfo.append(tmpbox)
