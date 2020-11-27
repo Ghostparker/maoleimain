@@ -100,8 +100,13 @@ class ModelInfer:
 
 
     def add_vegaout(self,vegaout):
-        vegaout['tagname'] = 1
-        print(vega_out[])
+        try:
+            if(isinstance(vega_out[0][0],dict) ):
+                vega_out['tagname'] = 1
+            return vega_out
+        except:
+            return vega_out
+
 
     def get_infer_result(self, image, box=None):
         # preprocess image
@@ -129,7 +134,7 @@ class ModelInfer:
         outputs, vega_outputs = postprocessfactory.execute_post_process(self.model_name, [output], [usr_data])
         if self.mode == "dev":
             return outputs
-        print(type(vega_outputs))
+        print(type(vega_outputs[0][0]))
         return outputs, vega_outputs
 
 
