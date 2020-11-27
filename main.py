@@ -110,6 +110,7 @@ class ModelInfer:
             print(vega_out)
             return vega_out
         except:
+            print('except')
             return vega_out
 
     def get_tagname_bytagid(self,search_tagid):
