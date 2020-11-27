@@ -92,7 +92,9 @@ class ModelInfer:
         self.taginfo = []
         for line in open(osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg')):
             if('#' == line[0]):
+                print('line ##### {}'.format(line))
                 continue
+            print('line no ||||||||| {}'.format(line))
             tmptaginfo = TagInfo(line)
             if(tmptaginfo is not None):
                 self.taginfo.append(tmptaginfo)
