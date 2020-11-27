@@ -16,7 +16,6 @@ import postprocessfactory
 class TagInfo:
     def __init__(self,line):
         data = line.strip().split()
-        print(data)
         self.info = {}
         self.info['tagname'] = data[0]
         self.info['tagid'] = int(data[1])
@@ -95,32 +94,32 @@ class ModelInfer:
                 continue
             tmpbox = TagInfo(line)
             self.taginfo.append(tmpbox)
-        for i in self.taginfo:
-            i.show()
-        print(len(self.taginfo))
+        # for i in self.taginfo:
+        #     i.show()
+        # print(len(self.taginfo))
 
 
     def add_vegaout(self,vega_out):
         try:
-            print('in add vegaout')
-            print(vega_out)
-            print(type(vega_out[0][0]))
-            print(isinstance(vega_out[0][0],dict))
+            # print('in add vegaout')
+            # print(vega_out)
+            # print(type(vega_out[0][0]))
+            # print(isinstance(vega_out[0][0],dict))
             if(isinstance(vega_out[0][0],dict) ):
                 tmptagname = self.get_tagname_bytagid(vega_out[0][0]['tagnameid'])
                 vega_out[0][0]['tagname'] = tmptagname
 
 
-            print('end add vegaout')
-            print(vega_out)
+            # print('end add vegaout')
+            # print(vega_out)
             return vega_out
         except:
             print('except')
             return vega_out
 
     def get_tagname_bytagid(self,search_tagid):
-        print(search_tagid)
-        print(type(search_tagid))
+        # print(search_tagid)
+        # print(type(search_tagid))
         for i in self.taginfo:
             if(i.info['tagid'] == search_tagid):
                 return i.info['tagname']
