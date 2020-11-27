@@ -90,7 +90,9 @@ class ModelInfer:
 
     def set_taginfo(self):
         self.taginfo = []
+        print(osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg'))
         for line in open(osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg')):
+
             if('#' == line[0]):
                 print('line ##### {}'.format(line))
                 continue
