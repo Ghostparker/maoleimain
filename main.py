@@ -91,12 +91,17 @@ class ModelInfer:
         self.taginfo = []
         self.tagcfgpath = osp.join(os.path.dirname(os.path.abspath(__file__)),'data','tag_uid.cfg')
         for line in open(self.tagcfgpath):
-            if('#' == line[0] or line == ''):
+            if('#' == line[0] or line == '\n'):
                 continue
             tmpbox = TagInfo(line)
             self.taginfo.append(tmpbox)
         for i in self.taginfo:
             i.show()
+
+
+    def add_vegaout(self,vegaout):
+        vegaout['tagname'] = 1
+        print(vega_out[])
 
     def get_infer_result(self, image, box=None):
         # preprocess image
@@ -124,7 +129,7 @@ class ModelInfer:
         outputs, vega_outputs = postprocessfactory.execute_post_process(self.model_name, [output], [usr_data])
         if self.mode == "dev":
             return outputs
-
+        print(type(vega_outputs))
         return outputs, vega_outputs
 
 
