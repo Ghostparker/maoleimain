@@ -99,14 +99,19 @@ class ModelInfer:
             i.show()
 
 
-    def add_vegaout(self,vegaout):
+    def add_vegaout(self,vega_out):
         try:
             if(isinstance(vega_out[0][0],dict) ):
-                vega_out['tagname'] = 1
+                vega_out[0][0]['tagname'] = self.get_tagname_bytagid(vega_out[0][0]['tagid'])
             return vega_out
         except:
             return vega_out
 
+    def get_tagname_bytagid(self,search_tagid):
+        for i in self.taginfo:
+            if(i['tagid'] == search_tagid):
+                return i['tagname']
+        return 'not exist'
 
     def get_infer_result(self, image, box=None):
         # preprocess image
