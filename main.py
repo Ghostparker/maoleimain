@@ -103,6 +103,7 @@ class ModelInfer:
     def add_vegaout(self,vega_out):
         try:
             print(vega_out)
+            print(type(vega_out))
             if(isinstance(vega_out[0],list) ):
                 for idx,one_vegaout in enumerate(vega_out[0]):
                     print(vega_out[0][idx]['tagnameid'])
