@@ -98,6 +98,7 @@ class ModelInfer:
         try:
             if(isinstance(vega_out[0],list) ):
                 for idx,one_vegaout in enumerate(vega_out[0]):
+                    print(vega_out[0][idx]['tagnameid'])
                     tmptagname = self.get_tagname_bytagid(vega_out[0][idx]['tagnameid'])
                     vega_out[0][idx]['tagname'] = tmptagname
             return vega_out
